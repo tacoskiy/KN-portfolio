@@ -1,0 +1,61 @@
+---
+// Sidebar.astro
+interface Props {
+    isFrontPage?: boolean;
+}
+
+const { isFrontPage = true } = Astro.props;
+---
+
+<header class="sidebar">
+    <ul class="sidebar-nav">
+        <a href="/">
+            <img
+                class="site-icon"
+                src="/assets/img/icon/site-icon.svg"
+                alt="site icon"
+            />
+        </a>
+        <div class="divider"></div>
+        {
+            isFrontPage ? (
+                <>
+                    <li class="nav-item">
+                        <a href="#main-visual" data-text="Main-Visual">
+                            <span class="text">Top</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#works">Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <div class="divider" />
+                </>
+            ) : (
+                <li class="nav-item">
+                    <a href="/">Top-Page</a>
+                </li>
+            )
+        }
+        <li class="nav-item">
+            <a href="/works/">Works-List</a>
+        </li>
+    </ul>
+    <button class="menu-button">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <img
+        class="sidebar-barcode"
+        src="/assets/img/sidebar-barcode.svg"
+        alt="barcode"
+        loading="lazy"
+        decoding="async"
+    />
+</header>

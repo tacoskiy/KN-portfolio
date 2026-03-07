@@ -1,0 +1,84 @@
+---
+// Works.astro
+const works = [
+    {
+        title: "Project Alpha",
+        client: "Client A",
+        content: "<p>Description for Project Alpha.</p>",
+        link: "/works/project-alpha",
+    },
+    {
+        title: "Project Beta",
+        client: "Client B",
+        content: "<p>Description for Project Beta.</p>",
+        link: "/works/project-beta",
+    },
+    {
+        title: "Project Gamma",
+        client: "Client C",
+        content: "<p>Description for Project Gamma.</p>",
+        link: "/works/project-gamma",
+    },
+    {
+        title: "Project Delta",
+        client: "Client D",
+        content: "<p>Description for Project Delta.</p>",
+        link: "/works/project-delta",
+    },
+];
+---
+
+<section class="works" id="works">
+    <div class="dim"></div>
+    <article class="content">
+        <ul class="works-list">
+            {
+                works.length > 0 ? (
+                    works.map((work, index) => (
+                        <li class={`work-item ${index === 0 ? "first" : ""}`}>
+                            <div class="top wrapper">
+                                <h3 class="title">{work.title}</h3>
+                                <p class="client">{work.client}</p>
+                            </div>
+                            <div class="bottom wrapper">
+                                <div
+                                    class="work-content"
+                                    set:html={work.content}
+                                />
+                                <a class="link-button" href={work.link}>
+                                    <img
+                                        src="/assets/img/icon/arrow-up-right.svg"
+                                        alt="arrow"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </a>
+                            </div>
+                        </li>
+                    ))
+                ) : (
+                    <p>投稿がありません</p>
+                )
+            }
+        </ul>
+        <aside class="works-sidebar">
+            <h2>WORKS</h2>
+            <a class="viewmore-button" href="/works/"
+                ><img
+                    src="/assets/img/icon/viewmore-arrow.svg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                /></a
+            >
+        </aside>
+    </article>
+    <img
+        class="pixel-gradation"
+        src="/assets/img/pixel-gradation.svg"
+        alt=""
+        loading="lazy"
+        decoding="async"
+    />
+    <div class="bg"></div>
+</section>

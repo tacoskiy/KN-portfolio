@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MainVisual from '../components/sections/MainVisual.astro';
+import About from '../components/sections/About.astro';
+import Works from '../components/sections/Works.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
+import BackgroundPolygons from '../components/sections/BackgroundPolygons.astro';
+---
+
+<BaseLayout title="KENT NAGATA - PortFolioSite" isFrontPage={true}>
+  <main>
+    <MainVisual />
+    <About />
+    <Works />
+    <Skills />
+    <Contact />
+    <BackgroundPolygons />
+  </main>
+</BaseLayout>

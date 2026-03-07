@@ -1,0 +1,36 @@
+---
+// NavPanel.astro
+interface Props {
+  isFrontPage?: boolean;
+}
+
+const { isFrontPage = true } = Astro.props;
+---
+<nav class="nav-panel">
+    <ul>
+        {isFrontPage ? (
+            <>
+                <li class="nav-item-content">
+                    <a href="#main-visual" data-text="Main-Visual"><span class="text">Top</span></a>
+                </li>
+                <li class="nav-item-content">
+                    <a href="#about">About</a>
+                </li>
+                <li class="nav-item-content">
+                    <a href="#works">Works</a>
+                </li>
+                <li class="nav-item-content">
+                    <a href="#contact">Contact</a>
+                </li>
+                <div class="divider"></div>
+            </>
+        ) : (
+            <li class="nav-item-content">
+                <a href="/">Top-Page</a>
+            </li>
+        )}
+        <li class="nav-item-content">
+            <a href="/works/">Works-List</a>
+        </li>
+    </ul>
+</nav>

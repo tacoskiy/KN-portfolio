@@ -1,0 +1,66 @@
+---
+import "../styles/reset.css";
+import "../styles/global.css";
+import LoadingScreen from "../components/layout/LoadingScreen.astro";
+import Sidebar from "../components/layout/Sidebar.astro";
+import NavPanel from "../components/layout/NavPanel.astro";
+import CopyToast from "../components/layout/CopyToast.astro";
+
+interface Props {
+  title?: string;
+  isFrontPage?: boolean;
+}
+
+const { title = "KENT NAGATA - PortFolioSite", isFrontPage = true } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Preload LCP Image -->
+    <link rel="preload" as="image" href="/assets/img/favicon-memoria.png" />
+
+    <!-- Scripts - Deferred to prevent render-blocking -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      is:inline
+      defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      is:inline
+      defer></script>
+    <script
+      src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"
+      is:inline
+      defer></script>
+  </head>
+  <body class={isFrontPage ? "home" : ""}>
+    {isFrontPage && <LoadingScreen />}
+
+    <Sidebar isFrontPage={isFrontPage} />
+    <NavPanel isFrontPage={isFrontPage} />
+
+    <slot />
+
+    <CopyToast />
+
+    <footer>
+      <!-- フッター要素 -->
+    </footer>
+
+    <script src="../scripts/lenis.ts"></script>
+    <script src="../scripts/common.ts"></script>
+    <script src="../scripts/animations.ts"></script>
+  </body>
+</html>

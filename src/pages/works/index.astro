@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Works List | KENT NAGATA" isFrontPage={false}>
+  <main class="works-page">
+    <section class="works-list">
+        <h1>Works List</h1>
+        <p>※静的サイトへの移行のため、実績一覧は一時的にダミー配置となっています。</p>
+        <li class="work-item first">
+            <div class="top wrapper">
+                <h3 class="title">Project Alpha</h3>
+                <p class="client">Client A</p>
+            </div>
+            <div class="bottom wrapper">
+                <div class="work-content">
+                    <p>Description for Project Alpha.</p>
+                </div>
+                <a class="link-button" href="/works/project-alpha"><img src="/assets/img/icon/arrow-up-right.svg" alt="arrow"></a>
+            </div>
+        </li>
+    </section>
+
+    <div class="pagination">
+        <!-- Pagination Mock -->
+        <span class="page-numbers current">1</span>
+        <a class="page-numbers" href="#">2</a>
+        <a class="page-numbers" href="#">3</a>
+    </div>
+  </main>
+</BaseLayout>
