@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kent-nagata.me/sitemap-index.xml

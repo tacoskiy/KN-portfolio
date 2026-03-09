@@ -8,11 +8,22 @@ import CopyToast from "../components/layout/CopyToast.astro";
 
 interface Props {
   title?: string;
+  description?: string;
   isFrontPage?: boolean;
+  image?: string;
 }
 
-const { title = "KENT NAGATA - PortFolioSite", isFrontPage = true } =
-  Astro.props;
+const {
+  title = "KENT NAGATA | 長田絹人 - PortFolioSite",
+  description = "平成18年アメリカ生まれ、KADOKAWAドワンゴ情報工科学院 デザイナー専攻所属の長田絹人（KENT NAGATA）のポートフォリオサイトです。デザイン・ディレクション・WEBデザインなどの情報を掲載しています。",
+  isFrontPage = true,
+  image = "/assets/img/og-image.jpg", // Placeholder for OG image
+} = Astro.props;
+
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://example.com",
+); // Astro.site should be configured in astro.config.mjs
 ---
 
 <!doctype html>
@@ -21,6 +32,51 @@ const { title = "KENT NAGATA - PortFolioSite", isFrontPage = true } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO / AIO Metadata -->
+    <meta name="author" content="長田絹人 (KENT NAGATA)" />
+    <meta
+      name="keywords"
+      content="長田絹人, KENT NAGATA, kent-nagata, kent-nagata.me, デザイナー, ポートフォリオ, KADOKAWAドワンゴ情報工科学院, WEBデザイン"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, canonicalURL)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+    <!-- JSON-LD for AIO (AI Optimization) -->
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "長田絹人",
+        alternateName: ["KENT NAGATA", "kent-nagata"],
+        url: canonicalURL,
+        image: new URL(image, canonicalURL),
+        description: description,
+        jobTitle: "Designer",
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: "KADOKAWAドワンゴ情報工科学院",
+        },
+        knowsAbout: ["Design", "Web Design", "Direction"],
+      })}
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
