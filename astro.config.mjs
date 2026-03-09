@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://kent-nagata.me/', // 自分のドメインに変更してください
+  site: 'https://kent-nagata.me', // 末尾のスラッシュを削除してみます
   integrations: [sitemap()],
   output: 'static',
   server: {
